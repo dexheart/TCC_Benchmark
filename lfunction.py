@@ -24,3 +24,11 @@ def convert(x,y):
         return x
     
     
+def duplicate():
+    fout=open("out.csv","a")
+    for num in range(1,100):
+        for line in open("Life_Expectancy_Data.csv"):
+            fout.write(line)    
+    fout.close()
+    
+    
