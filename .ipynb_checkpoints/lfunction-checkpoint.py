@@ -1,4 +1,6 @@
 import sys
+import re
+
 
 
 def mstos(x):
@@ -21,14 +23,31 @@ def convert(x,y):
     elif y == 'ns':
         return nstos(x)
     else:
-        return x
+        return x    
     
     
-def duplicate():
-    fout=open("out.csv","a")
-    for num in range(1,100):
-        for line in open("Life_Expectancy_Data.csv"):
+    
+def tratamento(k):
+    
+    try:
+        x = convert(float(k.split(' ')[0]),k.split(' ')[1])
+        y = convert(float(k.split(' ')[3]), k.split(' ')[4])
+    except:
+        p = re.findall(r"[-+]?\d*\.\d+|\d+", k)
+        x = (float(p[0])*60) + float(p[1])
+        y = convert(float(k.split(' ')[3]), k.split(' ')[4])
+
+    
+    return x, y
+    
+    
+def duplicate(y, x, npath, lpath):
+    npath = str(y) + str(x) + npath
+    fout=open(npath,"a")
+    for num in range(1,x):
+        for line in open(lpath):
             fout.write(line)    
     fout.close()
+    return npath
     
     
