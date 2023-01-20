@@ -1,4 +1,4 @@
-# sparkLasidBench
+# TCC - sparkLasidBench
 
 
 Benchmark criado para testar o impacto de peças de hardware no desempenho de aplicações Spark.
